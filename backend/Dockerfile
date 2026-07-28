@@ -5,10 +5,14 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copy requirements first (for faster rebuilds)
-COPY requirements.txt .
+COPY requirements*.txt ./
 
-# Install all dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Install dependencies. If a development requirements file exists, prefer it for faster builds.
+RUN if [ -f requirements-dev.txt ]; then \
+			pip install --no-cache-dir -r requirements-dev.txt; \
+		else \
+			pip install --no-cache-dir -r requirements.txt; \
+		fi
 
 # Copy the rest of the backend code
 COPY . .
