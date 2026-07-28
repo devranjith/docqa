@@ -1,0 +1,24 @@
+# Ignore all environment files
+.env
+**/.env
+.env.*
+**/.env.*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Build files
+dist/
+build/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
