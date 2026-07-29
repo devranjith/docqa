@@ -8,12 +8,7 @@ WORKDIR /app
 COPY requirements*.txt ./
 
 # Install dependencies. If a development requirements file exists, prefer it for faster builds.
-RUN if [ -f requirements-dev.txt ]; then \
-			pip install --no-cache-dir -r requirements-dev.txt; \
-		else \
-			pip install --no-cache-dir -r requirements.txt; \
-		fi
-
+RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the backend code
 COPY . .
 
